@@ -1,2 +1,2 @@
 # MyShop
-RABI ZHAI
+Store with few models for Web application course

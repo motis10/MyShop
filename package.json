@@ -1,7 +1,7 @@
 {
-  "name": "proshop",
+  "name": "ProjectStore",
   "version": "1.0.0",
-  "description": "MERN shopping cart app",
+  "description": "Final project shopping cart app",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -12,8 +12,6 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },
-  "author": "Brad Traversy",
-  "license": "MIT",
   "dependencies": {
     "@types/react-redux": "^7.1.16",
     "bcryptjs": "^2.4.3",

@@ -7,7 +7,7 @@ import Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
 
 const UserListScreen = ({ history }) => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const userList = useSelector((state) => state.userList)
   const { loading, error, users } = userList
@@ -18,23 +18,19 @@ const UserListScreen = ({ history }) => {
   const userDelete = useSelector((state) => state.userDelete)
   const { success: successDelete } = userDelete
 
-
-
   useEffect(() => {
-    dispatch(listUsers())
-  }, [dispatch])
-
-  if (userInfo && userInfo.isAdmin) {
-    dispatch(listUsers())
-  } else {
-    history.push('/login')
-  }
-}, [dispatch, history, successDelete])
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(listUsers())
+    } else {
+      history.push('/login')
+    }
+  }, [dispatch, history, successDelete, userInfo])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
       dispatch(deleteUser(id))
-    }  }
+    }
+  }
 
   return (
     <>
@@ -70,7 +66,7 @@ const UserListScreen = ({ history }) => {
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/user/${user._id}/edit`}>
+                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
                     <Button variant='light' className='btn-sm'>
                       <i className='fas fa-edit'></i>
                     </Button>

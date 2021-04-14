@@ -122,7 +122,6 @@ export const logout = () => (dispatch) => {
   
       const config = {
         headers: {
-          'Content-Type': 'application/json',
           Authorization: `Bearer ${userInfo.token}`,
         },
       }
@@ -227,7 +226,7 @@ export const logout = () => (dispatch) => {
         },
       }
   
-      const { data } = await axios.delete(`/api/users/${id}`, config)
+      await axios.delete(`/api/users/${id}`, config)
   
       dispatch({ type: USER_DELETE_SUCCESS })
     } catch (error) {

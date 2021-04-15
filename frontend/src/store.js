@@ -4,6 +4,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {
     productListReducer,
     productDetailsReducer,
+    productDeleteReducer,
+
   } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
 import {
@@ -14,7 +16,6 @@ import {
   userListReducer,
   userDeleteReducer,
   userUpdateReducer,
-  productDeleteReducer,
 
 
 

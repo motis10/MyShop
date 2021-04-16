@@ -8,13 +8,15 @@ import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import path from 'path'
 import uploadRoutes from './routes/uploadRoutes.js'
-
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
 dotenv.config()
 connectDB()
 
 
 const app = express()
+
 
 app.use(express.json())
 
@@ -36,7 +38,33 @@ const PORT = process.env.PORT || 5000
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
-app.listen(
+var server = app.listen(
   PORT,
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 )
+
+
+var ws = require('websocket').server;
+var http = require('http');
+ 
+var usersCounter = 0;
+
+var server2 = http.createServer().listen(7000);
+var wsServer = new ws({httpServer: server2});
+wsServer.on('request', function (request) {
+    console.log('client connected, connected clients: '+ usersCounter);
+        
+    var connection = request.accept(null, request.origin);
+    
+    usersCounter++;
+ 
+    connection.sendUTF(usersCounter);    
+    
+    connection.on('close', function (connection) {
+        usersCounter--;
+        console.log('client disconnected connected clients: '+ usersCounter);
+    });
+});
+
+
+

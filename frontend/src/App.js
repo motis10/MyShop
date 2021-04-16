@@ -18,8 +18,19 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+
+const client = new W3CWebSocket('ws://127.0.0.1:7000');
 
 const App = () => {
+  
+    client.onopen = () => {
+      console.log('WebSocket Client Connected');
+    };
+    client.onmessage = (message) => {
+      console.log(message);
+    };
+
   return (
     <Router>
       <Header />

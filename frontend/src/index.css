@@ -20,6 +20,13 @@ h2 {
   padding: 0.5rem 0;
 }
 
-.custom_p-2{
+.custom_p-2 {
   padding: 0px 6px 0px 6px;
+}
+
+.navbar-brand2 {
+  position: relative;
+  width: 10px;
+  left: 15px;
+  font-size: 1rem;
 }

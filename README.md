@@ -1,4 +1,5 @@
-# MyShop
+# Store - Final project for web application course
+
 Store with few models for Web application course
 This repo is split into few folders:
 * Scraper

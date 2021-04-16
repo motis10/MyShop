@@ -108,7 +108,34 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @route   GET /api/users
 // @access  Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
-  console.log('req.query.keyword', req.query.keyword);
+  var splitted = req.query.keyword.split(",")
+  console.log("splitted[1]", splitted[1])
+  console.log("splitted[2]", splitted[2])
+  var isAdmin = (splitted[1] == true) ? Boolean(true) : false
+  var isGmail = (splitted[2] == true) ? Boolean(true) : false
+
+  const keyword = req.query.keyword
+  ? {
+    name: {
+      $regex: splitted[0].substring(1).trim(),
+      $options: 'i',
+    },
+    isAdmin: isAdmin,
+    email: {
+      $regex: isGmail ? 'gmail.com' : '',
+      $options: 'i',
+    },
+    }
+  : {}
+    console.log(keyword)
+  const users = await User.find({ ...keyword})
+  res.json(users)
+})
+
+// @desc    Get all users coutner by admin or not
+// @route   GET /api/users/groupby
+// @access  Private/Admin
+const getUsersGroupbyAdmin = asyncHandler(async (req, res) => {
   var splitted = req.query.keyword.split(",")
 
   const keyword = req.query.keyword
@@ -127,6 +154,18 @@ const getUsers = asyncHandler(async (req, res) => {
 
   const users = await User.find({ ...keyword})
   res.json(users)
+  // console.log('server getUsersGroupbyAdmin')
+  // const keyword = [
+  //   {
+  //     $group: {
+  //        _id: "$isAdmin",
+  //        count: { $sum: 1 }
+  //     }
+  //   }
+  // ]
+
+  // const result = await User.aggregate({ keyword})
+  // res.json(result)
 })
 
 // @desc    Delete user
@@ -189,9 +228,10 @@ export {
   registerUser,
   getUserProfile,
   updateUserProfile,
+  getUsersGroupbyAdmin,
   getUsers,
   deleteUser,
   getUserById,
-  updateUser,
+  updateUser
 }
 

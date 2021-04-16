@@ -5,8 +5,27 @@ import Product from '../models/productModel.js'
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
+  var splitted = req.query.keyword.split(",")
+  console.log(splitted[0]);
 
+  const keyword = req.query.keyword
+  ? {
+      name: {
+        $regex: splitted[0],
+        $options: 'i',
+      },
+      category: {
+       $regex: splitted[1],
+       $options: 'i',
+      },
+      description: {
+        $regex: splitted[2],
+        $options: 'i',
+      },
+    }
+  : {}
+
+const products = await Product.find({ ...keyword })
   res.json(products)
 })
 

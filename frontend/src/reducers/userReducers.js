@@ -24,6 +24,10 @@ import {
     USER_UPDATE_REQUEST,
     USER_UPDATE_SUCCESS,
     USER_UPDATE_FAIL,
+    USER_LIST_GROUPBY_REQUEST,
+    USER_LIST_GROUPBY_SUCCESS,
+    USER_LIST_GROUPBY_FAIL,
+    USER_LIST_GROUPBY_RESET,
 
     
   } from '../constants/userConstants'
@@ -128,6 +132,22 @@ import {
         return state
     }
   }
+
+  export const userListGroupbyReducer = (state = { groups: [] }, action) => {
+    switch (action.type) {
+      case USER_LIST_GROUPBY_REQUEST:
+        return { loading: true }
+      case USER_LIST_GROUPBY_SUCCESS:
+        return { loading: false, groups: action.payload }
+      case USER_LIST_GROUPBY_FAIL:
+        return { loading: false, error: action.payload }
+        case USER_LIST_GROUPBY_RESET:
+          return { groups: [] }
+      default:
+        return state
+    }
+  }
+
 
   
   

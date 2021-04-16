@@ -24,7 +24,10 @@ import {
   USER_UPDATE_FAIL,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_REQUEST,
-
+  USER_LIST_GROUPBY_REQUEST,
+  USER_LIST_GROUPBY_SUCCESS,
+  USER_LIST_GROUPBY_FAIL,
+  USER_LIST_GROUPBY_RESET
 
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
@@ -138,6 +141,41 @@ export const logout = () => (dispatch) => {
     } catch (error) {
       dispatch({
         type: USER_DETAILS_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+  }
+  
+  export const getUserCounterGroupByAdmin = () => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: USER_LIST_GROUPBY_REQUEST,
+      })
+  
+      const {
+        userLogin: { userInfo },
+      } = getState()
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+  
+      const { data } = await axios.get(`/api/users/groupby`, config)
+  
+      dispatch({
+        type: USER_LIST_GROUPBY_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      console.error(error);
+
+      dispatch({
+        type: USER_LIST_GROUPBY_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

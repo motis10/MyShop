@@ -135,37 +135,19 @@ const getUsers = asyncHandler(async (req, res) => {
 // @desc    Get all users coutner by admin or not
 // @route   GET /api/users/groupby
 // @access  Private/Admin
-const getUsersGroupbyAdmin = asyncHandler(async (req, res) => {
-  var splitted = req.query.keyword.split(",")
-
-  const keyword = req.query.keyword
-  ? {
-    name: {
-      $regex: splitted[0].substring(1).trim(),
-      $options: 'i',
-    },
-    isAdmin: splitted[1],
-    email: {
-      $regex: Boolean(splitted[2]) ? 'gmail.com' : '',
-      $options: 'i',
-    },
+const getUsersCount = asyncHandler(async (req, res) => {
+  console.log('server getUsersGroupbyAdmin')
+  const keyword = [
+    {
+      $group: {
+         _id: "$isAdmin",
+         count: { $sum: 1 }
+      }
     }
-  : {}
+  ]
 
-  const users = await User.find({ ...keyword})
-  res.json(users)
-  // console.log('server getUsersGroupbyAdmin')
-  // const keyword = [
-  //   {
-  //     $group: {
-  //        _id: "$isAdmin",
-  //        count: { $sum: 1 }
-  //     }
-  //   }
-  // ]
-
-  // const result = await User.aggregate({ keyword})
-  // res.json(result)
+  const result = await User.aggregate(keyword)
+  res.json(result)
 })
 
 // @desc    Delete user
@@ -228,7 +210,7 @@ export {
   registerUser,
   getUserProfile,
   updateUserProfile,
-  getUsersGroupbyAdmin,
+  getUsersCount,
   getUsers,
   deleteUser,
   getUserById,

@@ -8,11 +8,13 @@ import {
     getUsers,
     deleteUser,
     getUserById,
-  updateUser,
+    updateUser,
+    getUsersCount
 
   } from '../controllers/userController.js'
   import { protect, admin } from '../middleware/authMiddleware.js'
 
+  router.route('/groupby').get(protect, admin, getUsersCount)
   router.route('/').post(registerUser).get(protect, admin, getUsers)
   router.post('/login', authUser)
 router

@@ -43,7 +43,7 @@ const TripleSearchBox = ({ history }) => {
         placeholder='description'
         className='mr-sm-1 ml-sm-0'
       ></Form.Control>
-      <Button type='submit' variant='outline-success' className='p-2'>
+      <Button type='submit' variant='outline-success' className='custom_p-2'>
         Search
       </Button>
       </Row>

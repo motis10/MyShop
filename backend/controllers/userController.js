@@ -108,12 +108,20 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @route   GET /api/users
 // @access  Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
+  console.log('req.query.keyword', req.query.keyword);
+  var splitted = req.query.keyword.split(",")
+
   const keyword = req.query.keyword
   ? {
-      name: {
-        $regex: req.query.keyword.substring(1).trim(),
-        $options: 'i',
-      },
+    name: {
+      $regex: splitted[0].substring(1).trim(),
+      $options: 'i',
+    },
+    isAdmin: splitted[1],
+    email: {
+      $regex: Boolean(splitted[2]) ? 'gmail.com' : '',
+      $options: 'i',
+    },
     }
   : {}
 

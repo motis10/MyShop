@@ -160,11 +160,15 @@ const ProfileScreen = ({ location, history }) => {
                   </tr>
                 ))}
               </tbody>
-            </Table>  
-            {orders.map((order) => (
-              data.push({date: order.createdAt.substring(0, 10), totalPrice: order.totalPrice}) 
-            ))}
-            <BarChart data={data} />
+            </Table>
+            <div>
+              {orders.map((order) => (
+                data.push({date: order.createdAt.substring(0, 10), totalPrice: order.totalPrice}) 
+              ))}
+              <br/><br/>
+              <h2>Orders amount by day</h2>
+              <BarChart data={data} />
+            </div>
           </div>      
         )}
       </Col>

@@ -21,20 +21,25 @@ import OrderListScreen from './screens/OrderListScreen'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 const client = new W3CWebSocket('ws://127.0.0.1:7000');
+var counter = 0;
 
 const App = () => {
-  
+
     client.onopen = () => {
       console.log('WebSocket Client Connected');
     };
     client.onmessage = (message) => {
-      console.log(message);
+      console.log(message.data);
+      counter = message.data;
     };
 
   return (
     <Router>
       <Header />
       <main className='py-3'>
+        <div>
+          <p>Counter on website: ({ counter })</p>
+        </div>
         <Container>
         <Route path='/order/:id' component={OrderScreen} />
         <Route path='/login' component={LoginScreen} />
@@ -53,7 +58,6 @@ const App = () => {
           <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
           <Route path='/admin/orderlist' component={OrderListScreen} />
           <Route path='/search/:keyword' component={HomeScreen} />
-
 
         </Container>
       </main>

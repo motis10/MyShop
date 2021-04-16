@@ -24,10 +24,6 @@ const Header = () => {
           <LinkContainer to='/'>
             <Navbar.Brand>Store</Navbar.Brand>
           </LinkContainer>
-          <LinkContainer to='/'>
-          <h2 style="color:white;">connected users:</h2>
-
-          </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
           <Route render={({ history }) => <TripleSearchBox history={history} />} />

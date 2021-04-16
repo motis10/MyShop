@@ -51,17 +51,21 @@ var usersCounter = 0;
 
 var server2 = http.createServer().listen(7000);
 var wsServer = new ws({httpServer: server2});
+var clients = [];
 wsServer.on('request', function (request) {
     console.log('client connected, connected clients: '+ usersCounter);
         
     var connection = request.accept(null, request.origin);
-    
+    clients.push(connection);
+
     usersCounter++;
- 
-    connection.sendUTF(usersCounter);    
-    
+
+    clients.forEach(function(client) {
+      client.send(usersCounter);
+    });
+      
     connection.on('close', function (connection) {
-        usersCounter--;
+        usersCounter--;  
         console.log('client disconnected connected clients: '+ usersCounter);
     });
 });

@@ -40,10 +40,6 @@ const UserListScreen = ({ history, match }) => {
     }
   }
 
-  const showGroupsHandler = (id) => {
-    dispatch(getUserCounterGroupByAdmin())
-  }
-
   return (
     <>
       <h1>Users</h1>

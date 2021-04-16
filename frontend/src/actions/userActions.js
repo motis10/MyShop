@@ -180,7 +180,7 @@ export const logout = () => (dispatch) => {
     }
   }
 
-  export const listUsers = () => async (dispatch, getState) => {
+  export const listUsers = (keyword = '') => async (dispatch, getState) => {
     try {
       dispatch({
         type: USER_LIST_REQUEST,
@@ -196,7 +196,7 @@ export const logout = () => (dispatch) => {
         },
       }
   
-      const { data } = await axios.get(`/api/users`, config)
+      const { data } = await axios.get(`/api/users?keyword=${keyword}`, config)
   
       dispatch({
         type: USER_LIST_SUCCESS,

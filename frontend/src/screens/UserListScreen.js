@@ -5,8 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
+import SearchBox from '../components/SearchBox'
+import { Route } from 'react-router-dom'
 
-const UserListScreen = ({ history }) => {
+const UserListScreen = ({ history, match }) => {
+  const keyword = match.params.keyword
+
   const dispatch = useDispatch()
 
   const userList = useSelector((state) => state.userList)
@@ -20,11 +24,11 @@ const UserListScreen = ({ history }) => {
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listUsers())
+      dispatch(listUsers(keyword))
     } else {
       history.push('/login')
     }
-  }, [dispatch, history, successDelete, userInfo])
+  }, [dispatch, history, successDelete, userInfo, keyword])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
@@ -35,6 +39,7 @@ const UserListScreen = ({ history }) => {
   return (
     <>
       <h1>Users</h1>
+      <div ><Route render={({ history }) => <SearchBox history={history} fromScreen={'usersList'} />} /></div>
       {loading ? (
         <Loader />
       ) : error ? (

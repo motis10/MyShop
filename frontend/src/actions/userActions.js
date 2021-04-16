@@ -27,7 +27,6 @@ import {
   USER_LIST_GROUPBY_REQUEST,
   USER_LIST_GROUPBY_SUCCESS,
   USER_LIST_GROUPBY_FAIL,
-  USER_LIST_GROUPBY_RESET
 
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'

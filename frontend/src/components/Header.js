@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
-import SearchBox from './SearchBox'
 import { useDispatch, useSelector } from 'react-redux'
 import TripleSearchBox from './TripleSearchBox'
 

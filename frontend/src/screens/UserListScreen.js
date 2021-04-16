@@ -103,7 +103,7 @@ const UserListScreen = ({ history, match }) => {
             ) : (
               groups ? groups.map((group) => (
                 <li key={group._id}>
-                  {(group._id == true) ? 'Admins' : 'Users'}: {group.count}
+                  {(group._id === true) ? 'Admins' : 'Users'}: {group.count}
                 </li>
               )): ''
             )}

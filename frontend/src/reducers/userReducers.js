@@ -27,8 +27,6 @@ import {
     USER_LIST_GROUPBY_REQUEST,
     USER_LIST_GROUPBY_SUCCESS,
     USER_LIST_GROUPBY_FAIL,
-    USER_LIST_GROUPBY_RESET,
-
     
   } from '../constants/userConstants'
   
@@ -141,8 +139,6 @@ import {
         return { loading: false, groups: action.payload }
       case USER_LIST_GROUPBY_FAIL:
         return { loading: false, error: action.payload }
-        case USER_LIST_GROUPBY_RESET:
-          return { groups: [] }
       default:
         return state
     }

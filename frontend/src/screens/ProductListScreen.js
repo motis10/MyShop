@@ -20,8 +20,6 @@ const ProductListScreen = ({ history, match }) => {
 
   const productDelete = useSelector((state) => state.productDelete)
   const {
-    loading: loadingDelete,
-    error: errorDelete,
     success: successDelete,
   } = productDelete
 

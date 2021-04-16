@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from './components/Header'
@@ -21,26 +21,26 @@ import OrderListScreen from './screens/OrderListScreen'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 const client = new W3CWebSocket('ws://127.0.0.1:7000');
-var counter = 0;
 
 const App = () => {
+    const [value, setValue] = useState(0)
+    const handleChange = (val) => setValue(val)
 
     client.onopen = () => {
-      console.log('WebSocket Client Connected');
+      console.log('WebSocket Client Connected')
     };
     client.onmessage = (message) => {
-      console.log(message.data);
-      counter = message.data;
+      handleChange(message.data)
     };
 
   return (
     <Router>
       <Header />
       <main className='py-3'>
-        <div>
-          <p>Counter on website: ({ counter })</p>
-        </div>
         <Container>
+        <div>
+          <p>Counter on website: {value}</p>
+        </div>
         <Route path='/order/:id' component={OrderScreen} />
         <Route path='/login' component={LoginScreen} />
           <Route path='/product/:id' component={ProductScreen} />

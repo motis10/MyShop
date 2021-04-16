@@ -43,27 +43,11 @@ const OrderScreen = ({ match }) => {
   }
 
   useEffect(() => {
-    const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get('/api/config/paypal')
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
-      script.async = true
-      script.onload = () => {
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
-    }
-
     if (!order || successDeliver) {
       dispatch({ type: ORDER_DELIVER_RESET })
       dispatch(getOrderDetails(orderId))
     } 
   }, [dispatch, orderId, successDeliver, order])
-
-  const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult)
-  }
 
   const deliverHandler = () => {
     dispatch(deliverOrder(order))

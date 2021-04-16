@@ -20,6 +20,7 @@ const TripleSearchBox = ({ history }) => {
     <Form onSubmit={submitHandler} inline>
       <Row>
       <Form.Control
+        size="sm"
         type='text'
         name='q'
         onChange={(e) => setKeyword1(e.target.value)}
@@ -27,6 +28,7 @@ const TripleSearchBox = ({ history }) => {
         className='mr-sm-1 ml-sm-0'
       ></Form.Control>
        <Form.Control
+        size="sm"
         type='text'
         name='q'
         onChange={(e) => setKeyword2(e.target.value)}
@@ -34,6 +36,7 @@ const TripleSearchBox = ({ history }) => {
         className='mr-sm-1 ml-sm-0'
       ></Form.Control>
        <Form.Control
+        size="sm"
         type='text'
         name='q'
         onChange={(e) => setKeyword3(e.target.value)}

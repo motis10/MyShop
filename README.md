@@ -1,4 +1,5 @@
-# Store - Final project for web application course
+# Store
+Final project shopping cart app for web application course
 
 Store with few models for Web application course
 This repo is split into few folders:

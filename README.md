@@ -1,4 +1,5 @@
 # My Shop
+
 ### Final project shopping cart app for web application course.
 
 ### Table of contents:
@@ -7,20 +8,24 @@
 -   [Quick Start](#Quick-Start)
 -   [Technologies](#technologies)
 
-
 <br>
 
 ---
+
 ## General Info
+
 ### Final project shopping cart app for web application course. Online Shop with few models for Web application course This repo is split into few folders:
-- Scraper
-- Backend (nodejs)
-- Frontend (react)
+
+-   Scraper
+-   Backend (nodejs)
+-   Frontend (react)
 
 <br>
 
 ---
-## Quick Start 
+
+## Quick Start
+
 ### Install server dependencies
 
 -   Make sure run it from the root project: ` C:\Users\fybish\Desktop\MyShop\`
@@ -43,15 +48,15 @@ npm install
 ```bash
 npm run dev
 ```
+
 <br>
 
 ---
 
-
 ## Technologies:
 
+#### <b>Backend: Node Express </b>
 
-#### <b>Backend: Node Express </b>  
 The server is starting http server (5000) and websocket server (7000)
 We have few models:
 
@@ -62,8 +67,8 @@ We have few models:
 *   All models are using mongodb scheme
 *   For each model we create a route and controller, in addition we are using middleware to watch and grant permission to our api.
 
-#### <b>Frontend: React Redux </b> 
- 
+#### <b>Frontend: React Redux </b>
+
 Search bar using 3 filters:
 ![search bar](https://user-images.githubusercontent.com/2521330/115066105-b8d4da00-9ef7-11eb-90db-c07127ba05d4.png)
 
@@ -83,5 +88,6 @@ D3.js graph showing orders price by day
 
 <br>
 
-## Made By: 
+## Made By:
+
 # Moti Stein, Ron Fybish, Zahi Zur

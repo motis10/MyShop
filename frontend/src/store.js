@@ -50,7 +50,6 @@ const reducer = combineReducers({
     orderDeliver: orderDeliverReducer,
     orderList: orderListReducer,
     groupbyList: userListGroupbyReducer,
-    
   })
   
 const cartItemsFromStorage = localStorage.getItem('cartItems')

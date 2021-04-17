@@ -9,7 +9,7 @@
     "category": "air conditioner",
     "price": "1299",
     "countInStock": "5",
-    "rating": "3",
+    "rating": "3", 
     "numReviews": "54"
 },
 {

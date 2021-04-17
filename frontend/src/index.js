@@ -7,6 +7,7 @@ import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+//First line render with store and all app is render
 ReactDOM.render(
   <Provider store={store}>
     <App />

@@ -39,7 +39,7 @@ npm install
 -   ` C:\Users\fybish\Desktop\MyShop\frontend`
 
 ```bash
-cd client
+cd frontend
 npm install
 ```
 

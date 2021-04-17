@@ -1,26 +1,69 @@
-# Store
+# My Shop
+### Final project shopping cart app for web application course.
 
-Final project shopping cart app for web application course
+### Table of contents:
 
-Store with few models for Web application course
-This repo is split into few folders:
+-   [General Info](#General-Info)
+-   [Quick Start](#Quick-Start)
+-   [Technologies](#technologies)
 
+
+<br>
+
+---
+## General Info
+### Final project shopping cart app for web application course. Online Shop with few models for Web application course This repo is split into few folders:
 - Scraper
 - Backend (nodejs)
 - Frontend (react)
 
-\***\*Backend (nodejs):\*\***  
+<br>
+
+---
+## Quick Start 
+### Install server dependencies
+
+-   Make sure run it from the root project: ` C:\Users\fybish\Desktop\MyShop\`
+
+```bash
+npm install
+```
+
+### Install client dependencies
+
+-   ` C:\Users\fybish\Desktop\MyShop\frontend`
+
+```bash
+cd client
+npm install
+```
+
+### Run both Express & React from root
+
+```bash
+npm run dev
+```
+<br>
+
+---
+
+
+## Technologies:
+
+
+#### <b>Backend: Node Express </b>  
 The server is starting http server (5000) and websocket server (7000)
 We have few models:
 
-- User
-- Product
-- Orders
+-   User
+-   Product
+-   Orders
 
-* All models are using mongodb scheme
-* For each model we create a route and controller, in addition we are using middleware to watch and grant permission to our api.
+*   All models are using mongodb scheme
+*   For each model we create a route and controller, in addition we are using middleware to watch and grant permission to our api.
 
-\***\*Frontend (react):\*\***  
+#### <b>Frontend: React Redux </b> 
+ 
 Search bar using 3 filters:
 ![search bar](https://user-images.githubusercontent.com/2521330/115066105-b8d4da00-9ef7-11eb-90db-c07127ba05d4.png)
 
@@ -38,6 +81,7 @@ D3.js graph showing orders price by day
 
 ---
 
-git repo:
-https://github.com/motis10/MyShop
-run the project with "npm run dev" command, (after npm install)
+<br>
+
+## Made By: 
+# Moti Stein, Ron Fybish, Zahi Zur

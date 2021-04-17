@@ -1,5 +1,5 @@
 for scraping products we used chrome extension called:
-Web Scraper - Free Web Scraping
+Web Scraper - Free  Web Scraping
 version 0.5.4
 
 after exporting the products to csv file, we use online tool to convert

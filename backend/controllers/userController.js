@@ -109,10 +109,10 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
   var splitted = req.query.keyword.split(",")
-  console.log("splitted[1]", splitted[1])
-  console.log("splitted[2]", splitted[2])
-  var isAdmin = (splitted[1] == true) ? Boolean(true) : false
-  var isGmail = (splitted[2] == true) ? Boolean(true) : false
+  console.log("splitted[1]", splitted[1], typeof(splitted[1]))
+  console.log("splitted[2]", splitted[2], typeof(splitted[2]))
+  var isAdmin = (splitted[1] === 'true') ? Boolean(true) : false
+  var isGmail = (splitted[2] === 'true') ? Boolean(true) : false
 
   const keyword = req.query.keyword
   ? {
